@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    backgroundColor: {
+      "primaryColor": "blue",
+      "secondary":"#050124",
+      "secondarylight":"#20185e",
+      "white":"#ffffff",
+      "grayLight":"#f7f7f7",
+      "primaryExtraLight":"#f2f2ff",
+      "red":"red",
+      "ground":"#00040a"
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
