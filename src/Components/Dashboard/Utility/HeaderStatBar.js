@@ -5,7 +5,7 @@ import React from "react";
 
 import { toast } from "react-hot-toast";
 import { IconButton } from "@mui/material";
-const HeaderStatBar = ({ create, setLimit, limit }) => {
+const HeaderStatBar = ({ setLimit, limit, location }) => {
   const router = useRouter();
   const { handleGenerateRandomString } = useAppStore();
   return (
@@ -24,7 +24,7 @@ const HeaderStatBar = ({ create, setLimit, limit }) => {
           <button className="uil uil-search bg-secondary h-full px-3" />
           <button
             onClick={() => {
-              router.push(create);
+              router.push(location);
             }}
             className="bg-secondary h-full px-3 flex gap-2 items-center font-medium "
           >

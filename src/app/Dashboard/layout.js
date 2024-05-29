@@ -9,7 +9,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import AdminNavBar from "@/Components/Dashboard/Utility/AdminNavBar";
-import { DashNav } from "@/Sample Data/Nav";
+import { DashNav } from "@/SampleData/Nav";
 import SideDrawer from "@/Components/Dashboard/Utility/SideDrawer";
 import { useAppStore } from "@/Context/UseStoreContext";
 import AccessDenied from "@/Components/Home/Utility/AccessDenied";

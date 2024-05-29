@@ -23,6 +23,12 @@ export function UseStoreContextProvider({ children }) {
   // Modal States
   const [isUpdateModal, setisUpdateModal] = useState(false);
   const [signOutIsOpen, setsignOutIsOpen] = useState(false);
+  const [isBuyingOpen, setisBuyingOpen] = useState(false);
+  const [curBuyPID, setcurBuyPID] = useState({});
+
+
+  //Cur pay User
+  const [curPayUser, setcurPayUser] = useState(null)
   return (
     <useStoreContext.Provider
       value={{
@@ -36,6 +42,12 @@ export function UseStoreContextProvider({ children }) {
         setisUpdateModal,
         AllProducts,
         setAllProducts,
+        isBuyingOpen,
+        setisBuyingOpen,
+        curBuyPID,
+        setcurBuyPID,
+        setcurPayUser,
+        curPayUser
       }}
     >
       {children}

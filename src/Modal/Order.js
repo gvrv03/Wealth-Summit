@@ -5,9 +5,14 @@ const { ObjectId } = mongoose.Schema.Types;
 // Define the product schema
 const orderSchema = new Schema(
   {
-    User: {
-      type: ObjectId,
-      ref: "User",
+    Name: {
+      type: String,
+      required: true,
+    },
+
+    Email: {
+      type: String,
+      required: true,
     },
     Product: {
       type: ObjectId,

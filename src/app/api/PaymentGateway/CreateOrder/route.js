@@ -9,9 +9,14 @@ import { NextResponse } from "next/server";
 export const POST = async (request) => {
   try {
     const { options, User, pID } = await request.json();
+    console.log(User);
     const response = await razorpayConfig.orders.create(options);
-    console.log(response);
-    await Order.create({ ...response, User, Product: pID });
+    await Order.create({
+      ...response,
+      Name: User?.name,
+      Email: User?.email,
+      Product: pID,
+    });
 
     return NextResponse.json(
       {
@@ -37,4 +42,3 @@ export const POST = async (request) => {
     );
   }
 };
-

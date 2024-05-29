@@ -5,7 +5,7 @@ import React from 'react'
 const AllBlogs = () => {
   return (
     <div>
-        <HeaderStatBar/>
+        <HeaderStatBar location="/Dashboard/Products/CreateProduct" />
         <ProductNotFound/>
     </div>
   )

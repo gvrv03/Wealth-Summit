@@ -1,5 +1,5 @@
 import { useAppStore } from "@/Context/UseStoreContext";
-import { DashNav } from "@/Sample Data/Nav";
+import { DashNav } from "@/SampleData/Nav";
 import { Toolbar } from "@mui/material";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
