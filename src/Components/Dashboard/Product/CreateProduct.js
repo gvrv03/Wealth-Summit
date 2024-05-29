@@ -4,9 +4,17 @@ import TextEditor from "./TextEditor";
 import { UploadButton, UploadDropzone } from "../Utility/UploadThings";
 import Pricing from "./Pricing";
 import { toast } from "react-hot-toast";
+import { useAppStore } from "@/Context/UseStoreContext";
+import { useProduct } from "@/Context/UseProductContext";
 const CreateProduct = () => {
+  const { createProduct } = useProduct();
+  const { userDetails } = useAppStore();
+  const [loading, setloading] = useState(false);
+  //Artical
   const [artical, setartical] = useState("");
-  const [files, setfiles] = useState([]);
+
+  //Images
+  const [thumbnail, setthumbnail] = useState("");
   const [images, setimages] = useState([]);
 
   // Pricing
@@ -15,20 +23,75 @@ const CreateProduct = () => {
   const [costPerItem, setcostPerItem] = useState(null);
   const [profit, setprofit] = useState(null);
   const [margin, setmargin] = useState(null);
+  //Title
+  const [title, settitle] = useState("");
+  const [description, setdescription] = useState("");
+  const [productURL, setproductURL] = useState("");
+
+  //status
+  const [status, setstatus] = useState("active");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setloading(true);
+      await createProduct({
+        productDetail: {
+          addeBy: userDetails?.User?._id,
+          title,
+          description,
+          status: status,
+          artical,
+          images: images,
+          thumbnail: thumbnail,
+          pricing: {
+            price,
+            comAtPrice: compareprice,
+            costPerItem,
+            profit,
+            margin,
+          },
+        },
+        product: {
+          Name: title,
+          Product: productURL,
+        },
+      });
+      setloading(false);
+    } catch (error) {
+      toast.error(error?.message);
+    }
+  };
+
   return (
     <div className="flex-col flex gap-5">
       <div className="flex gap-5">
         <input
           type="text"
           placeholder="Title..."
+          onChange={(e) => {
+            settitle(e.target.value);
+          }}
           className="w-full bg-secondary outline-none p-3"
         />
         <div className="gap-2 flex">
-          <button className="uil uil-pen flex items-center gap-2 bg-primaryColor p-2 px-5 rounded-full">
-            Draft
+          <button
+            onClick={() => {
+              if (status === "draft") {
+                setstatus("active");
+              } else {
+                setstatus("draft");
+              }
+            }}
+            className="uil uil-pen flex items-center gap-2 bg-primaryColor p-2 px-5 rounded-full"
+          >
+            {status === "active" ? "Draft" : "active"}
           </button>
-          <button className="uil uil-pen flex items-center gap-2 bg-red p-2 px-5 rounded-full">
-            Publish
+          <button
+            onClick={handleSubmit}
+            className="uil uil-pen flex items-center gap-2 bg-red p-2 px-5 rounded-full"
+          >
+            {loading ? "..." : "Save"}
           </button>
         </div>{" "}
       </div>
@@ -36,6 +99,9 @@ const CreateProduct = () => {
       <textarea
         type="text"
         name="description"
+        onChange={(e) => {
+          setdescription(e.target.value);
+        }}
         placeholder="Description"
         className="w-full bg-secondary outline-none p-3"
       />
@@ -54,7 +120,7 @@ const CreateProduct = () => {
             }}
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
-              setfiles(res);
+              setthumbnail(res[0]?.url);
               toast.success("Upload Completed");
             }}
             onUploadError={(error) => {
@@ -64,16 +130,14 @@ const CreateProduct = () => {
           <div className="w-full">
             <h2 className="font-semibold">Preview</h2>
             <h4 className=" text-gray-500 text-xs">
-              {files?.length == 0 && "Thumbnail not uploaded"}
+              {!thumbnail && "Thumbnail not uploaded"}
             </h4>
-            {files.map((item, index) => {
-              return (
-                <div className="border p-5" key={index}>
-                  <h4 className="text-xs">{item.name}</h4>
-                  <img src={item?.url} alt={item.name} />
-                </div>
-              );
-            })}
+
+            {thumbnail && (
+              <div className="p-5">
+                <img src={thumbnail} alt={thumbnail} />
+              </div>
+            )}
           </div>
         </div>
         <div className="flex w-full bg-secondary p-5 gap-5">
@@ -89,7 +153,7 @@ const CreateProduct = () => {
             }}
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
-              setimages((prev) => [...prev, res[0]]);
+              setimages((prev) => [...prev, res[0].url]);
               toast.success("Upload Completed");
             }}
             onUploadError={(error) => {
@@ -105,8 +169,7 @@ const CreateProduct = () => {
               {images?.map((item, index) => {
                 return (
                   <div className=" p-5" key={index}>
-                    <h4 className="text-xs">{item?.name}</h4>
-                    <img src={item?.url} alt={item?.name} />
+                    <img src={item} alt={item?.name} />
                   </div>
                 );
               })}
@@ -117,6 +180,14 @@ const CreateProduct = () => {
 
       <div className="flex gap-5  flex-col md:flex-row-reverse">
         <div className="flex gap-5  flex-col">
+          <input
+            type="text"
+            onChange={(e) => {
+              setproductURL(e.target.value);
+            }}
+            placeholder="Prodcut URL"
+            className="w-full bg-secondary outline-none p-3"
+          />
           <Pricing
             setprice={setprice}
             setcompareprice={setcompareprice}

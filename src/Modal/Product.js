@@ -16,11 +16,7 @@ const productSchema = new Schema(
     ProductDetail: {
       type: ObjectId,
       ref: "productDetail",
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+    }
   },
   {
     timestamps: true,

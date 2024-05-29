@@ -47,12 +47,11 @@ export const POST = RootAuth(async (request) => {
     });
 
     // --------------To Add actudal produuct----------------
-    const { Name, Product, date } = product;
+    const { Name, Product } = product;
     const productOBJ = {
       Name: Name,
       Product: Product,
       ProductDetail: addProductDetail._id,
-      date: date,
     };
     const addProduct = await ProductActual.create({ ...productOBJ });
 

@@ -9,3 +9,7 @@ export const RegisterUserURL = baseUrl + "api/Register";
 export const checkUserURL = baseUrl + "api/CheckLogin";
 export const getUsersURL = baseUrl + "api/Register";
 export const getUserRole = baseUrl + "api/CheckUserRole";
+
+//Products
+export const ProductsURL = baseUrl + "api/products";
+export const getSingleProductURL = baseUrl + "api/products/Product/";

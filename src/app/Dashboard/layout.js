@@ -14,6 +14,7 @@ import SideDrawer from "@/Components/Dashboard/Utility/SideDrawer";
 import { useAppStore } from "@/Context/UseStoreContext";
 import AccessDenied from "@/Components/Home/Utility/AccessDenied";
 import { UseDashboardContextProvider } from "@/Context/UseDashboardContext";
+import { UseProductContexProvider } from "@/Context/UseProductContext";
 const drawerWidth = 300;
 
 function ResponsiveDrawer({ window, children }) {
@@ -101,7 +102,9 @@ function ResponsiveDrawer({ window, children }) {
         >
           <Toolbar />
 
-          <UseDashboardContextProvider>{children}</UseDashboardContextProvider>
+          <UseDashboardContextProvider>
+            <UseProductContexProvider>{children}</UseProductContexProvider>
+          </UseDashboardContextProvider>
         </Box>
       </Box>
     );

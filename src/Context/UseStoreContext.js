@@ -6,7 +6,14 @@ import { createContext } from "react";
 const useStoreContext = createContext();
 export function UseStoreContextProvider({ children }) {
   const [userDetails, setuserDetails] = useState({});
-
+  //----------------------------All Products State //----------------------------
+  const [AllProducts, setAllProducts] = useState({
+    data: [],
+    isLoading: true,
+    error: null,
+    count: 0,
+    totalPages: 0,
+  });
   //----------------------------Refresh State----------------------------
   const [refresh, setrefresh] = useState("");
   const handleGenerateRandomString = () => {
@@ -27,6 +34,8 @@ export function UseStoreContextProvider({ children }) {
         handleGenerateRandomString,
         isUpdateModal,
         setisUpdateModal,
+        AllProducts,
+        setAllProducts,
       }}
     >
       {children}
