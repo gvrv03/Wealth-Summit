@@ -3,8 +3,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import { MainNav } from "@/SampleData/Nav";
+import { LeagalNav, MainNav } from "@/SampleData/Nav";
 import { usePathname, useRouter } from "next/navigation";
+import { Divider } from "@mui/joy";
+import Image from "next/image";
 
 export default function SideDrawerHome() {
   const [open, setOpen] = React.useState(false);
@@ -22,8 +24,28 @@ export default function SideDrawerHome() {
       role="presentation"
       onClick={toggleDrawer(false)}
     >
-      <div className="p-5 flex flex-col text-white bg-ground gap-5">
+
+      <div className="grid place-items-center p-5" >
+        <Image src="/logo.jpg"  className="rounded-full " width={50} height={50}  />
+      </div>
+      <div className="p-5 flex flex-col text-white bg-ground gap-2">
         {MainNav?.map((text, index) => (
+          <button
+            onClick={() => {
+              router.push(text.location);
+            }}
+            key={index}
+            className={`  ${
+              text?.icon
+            } gap-2 flex items-center uil text-left  p-2   ${
+              pathname === text?.location && "bg-secondary font-semibold"
+            }  hover:bg-secondary hover:font-semibold `}
+          >
+            {text.name}
+          </button>
+        ))}
+<Divider/>
+        {LeagalNav?.map((text, index) => (
           <button
             onClick={() => {
               router.push(text.location);

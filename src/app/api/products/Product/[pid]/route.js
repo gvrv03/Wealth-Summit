@@ -1,4 +1,3 @@
-
 import initDB from "@/helper/initDB";
 import ProductDetail from "@/Modal/ProductDetail";
 import { NextResponse } from "next/server";
@@ -15,12 +14,10 @@ export const GET = async (req, { params }) => {
     );
     return NextResponse.json(afterUpdate);
   } catch (error) {
-    return NextResponse.json(
-      {
-        error: error.message,
-        errorMsg: "Internal Server Error",
-        isSuccess: false,
-      }
-    );
+    return NextResponse.json({
+      error: error.message,
+      errorMsg: "Internal Server Error",
+      isSuccess: false,
+    });
   }
 };

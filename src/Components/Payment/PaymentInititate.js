@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useAppStore } from "@/Context/UseStoreContext";
 import { DefaultBTN } from "../Home/Utility/Utility";
 import { createOrderURL } from "@/helper/allLinks";
+import { htmlString } from "../Home/Utility/EmailTem";
 
 function generateOrderId() {
   const min = 1000000000; // Minimum 10-digit number
@@ -13,9 +14,35 @@ function generateOrderId() {
   return "OID" + orderId.toString();
 }
 
-const PaymentInititate = ({ amount, produDID, title, productDetailID }) => {
+const PaymentInititate = ({
+  amount,
+  produDID,
+  title,
+  productDetailID,
+  setisBuy,
+}) => {
   const [loading, setloading] = useState(false);
-  const { curPayUser } = useAppStore();
+  const { curPayUser, sendEmail } = useAppStore();
+
+  const handleSendEmail = async (invoice, payID, orderID) => {
+    setloading(true);
+    await sendEmail({
+      userEmails: "itsgaurav3112003@gmail.com",
+      subject: "Hey I Am",
+      ProductDetail: {
+        invoice,
+        email: curPayUser?.email,
+        name: curPayUser?.name,
+        title,
+        amount,
+        payID,
+        orderID,
+        produDID,
+      },
+    });
+    setisBuy(true);
+    setloading(false);
+  };
 
   //PAyemnt Integration
   const loadScript = (src) => {
@@ -81,7 +108,7 @@ const PaymentInititate = ({ amount, produDID, title, productDetailID }) => {
         image: "/logo.jpg", // URL of your store's logo
         order_id: data.data.id, // Unique order ID generated on the server-side
         handler: async (response) => {
-          await postPayment(response);
+          await postPayment(response, orderID);
         },
         // prefill: {
         //   name: "Gaurav Narnaware", // Customer name
@@ -101,14 +128,20 @@ const PaymentInititate = ({ amount, produDID, title, productDetailID }) => {
     }
   };
 
-  const postPayment = async (response) => {
+  const postPayment = async (response, orderID) => {
     setloading(true);
+    console.log(response);
     if (response.razorpay_payment_id) {
       await axios.post("/api/PaymentGateway/GetOrder", {
         OID: response.razorpay_order_id,
+        PID: response.razorpay_order_id,
         verifier: response,
       });
-
+      await handleSendEmail(
+        orderID,
+        response.razorpay_payment_id,
+        response.razorpay_order_id
+      );
       setloading(false);
       return toast.success("Payment Success");
     } else {

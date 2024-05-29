@@ -9,9 +9,17 @@ import ProductDetail from "@/Modal/ProductDetail";
 // --------------To Create Product --------------
 export const POST = async (request) => {
   try {
-    const { OID, verifier } = await request.json();
+    const { OID, PID, verifier } = await request.json();
     const order = await razorpayConfig.orders.fetch(OID);
-    await Order.findOneAndUpdate({ id: OID }, { ...order, ...verifier });
+    await Order.findOneAndUpdate(
+      { id: OID },
+      {
+        ...order,
+        ...verifier,
+        razorpay_payment_id: PID,
+        razorpay_order_id: OID,
+      }
+    );
     return NextResponse.json(
       {
         data: order,
@@ -37,17 +45,16 @@ export const POST = async (request) => {
   }
 };
 
-
 // --------------To Fetch All Saved Prodct--------------
 export const GET = async (request) => {
   try {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
-   
+
     const page = searchParams.get("page"); // Retrieves the value of the 'page' parameter
     const limit = searchParams.get("limit"); // Retrieves the value of the 'limit' parameter
     const query = searchParams.get("query"); // Retrieves the value of the 'query' parameter  Ex : ?query={"_id":"649ec1dc0227a5b8da286425"}
-   
+
     const skipCount = (page - 1) * limit;
     const orderCount = await Order.countDocuments(); // Get the total count of blogs
     const totalPages = Math.ceil(orderCount / limit); // Calculate the total number of pages

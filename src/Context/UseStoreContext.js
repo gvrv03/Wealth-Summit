@@ -1,7 +1,9 @@
 "use client";
+import { SendEmailAPI } from "@/API/Email/SendMail";
 import generateRandomString from "@/Functions/generateRandomString";
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { toast } from "react-hot-toast";
 
 const useStoreContext = createContext();
 export function UseStoreContextProvider({ children }) {
@@ -26,9 +28,28 @@ export function UseStoreContextProvider({ children }) {
   const [isBuyingOpen, setisBuyingOpen] = useState(false);
   const [curBuyPID, setcurBuyPID] = useState({});
 
-
   //Cur pay User
-  const [curPayUser, setcurPayUser] = useState(null)
+  const [curPayUser, setcurPayUser] = useState(null);
+
+  //-----------Send an Email -----------
+  const sendEmail = async ({
+    userEmails,
+    subject,
+    emailData,
+    ProductDetail,
+  }) => {
+    const { error } = await SendEmailAPI({
+      userEmails,
+      subject,
+      emailData,
+      ProductDetail,
+    });
+    if (error) {
+      return toast.error(error.message);
+    }
+    return toast.success("Email Send");
+  };
+
   return (
     <useStoreContext.Provider
       value={{
@@ -47,7 +68,8 @@ export function UseStoreContextProvider({ children }) {
         curBuyPID,
         setcurBuyPID,
         setcurPayUser,
-        curPayUser
+        curPayUser,
+        sendEmail,
       }}
     >
       {children}

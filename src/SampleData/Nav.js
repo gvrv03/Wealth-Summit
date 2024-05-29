@@ -38,4 +38,28 @@ export const MainNav = [
     location: "/Products",
     icon: " uil  uil-shopping-cart-alt",
   },
+  {
+    name: "Conatct",
+    location: "/ContactUs",
+    icon: " uil  uil-phone",
+  },
+];
+
+
+export const LeagalNav = [
+  {
+    name: "Privacy Policy",
+    location: "/PrivacyPolicy",
+    icon: " uil uil-newspaper",
+  },
+  {
+    name: "Terms & Condition",
+    location: "/TermsCondition",
+    icon: " uil  uil-clipboard-alt",
+  },
+  {
+    name: "Return Policy",
+    location: "/ReturnPolicy",
+    icon: " uil  uil-redo",
+  },
 ];

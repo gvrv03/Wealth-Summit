@@ -1,4 +1,5 @@
 import RenderAllModal from "@/Components/Home/Modal/RenderAllModal";
+import Footer from "@/Components/Home/Utility/Footer";
 import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
 import { UserAuthContexProvider } from "@/Context/UserAuthContext";
 import { UseStoreContextProvider } from "@/Context/UseStoreContext";
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             <RenderAllModal />
             <Toaster position="top-center" reverseOrder={false} />
             {children}
+            <Footer/>
           </UserAuthContexProvider>
         </UseStoreContextProvider>{" "}
       </body>

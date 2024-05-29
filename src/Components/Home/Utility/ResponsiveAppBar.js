@@ -12,7 +12,7 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
   const { userDetails, setsignOutIsOpen } = useAppStore();
   const [isSticky, setIsSticky] = useState(false);
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -39,7 +39,7 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
       <nav
         className={` ${
           isSticky ? position + " top-0 " : ""
-        }     z-50  top-0 w-full  ${shadow} transition-all backdrop-blur-sm  bgNav   delay-100 ease-linear left-0    md:px-0 px-5  border-gray-200`}
+        }     z-[9999]  top-0 w-full  ${shadow} transition-all backdrop-blur-sm  bgNav   delay-100 ease-linear left-0    md:px-0 px-5  border-gray-200`}
       >
         <div className="flex flex-wrap justify-between   gap-5 items-center  m-auto  md:px-5 py-3">
           <div className="  flex justify-between   w-full  gap-5">
@@ -61,7 +61,9 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
                   onClick={() => {
                     router.push(item?.location);
                   }}
-                  className={` ${pathname === item?.location && "text-blue-500 font-semibold" } flex gap-2 items-center text-white hover:text-blue-500 hover:font-semibold `}
+                  className={` ${
+                    pathname === item?.location && "text-blue-500 font-semibold"
+                  } flex gap-2 items-center text-white hover:text-blue-500 hover:font-semibold `}
                 >
                   <i className={item?.icon} />
                   <span>{item?.name}</span>
@@ -69,18 +71,7 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
               ))}
             </List>
             <div className="flex gap-5 items-center">
-              {userDetails?.isLogin ? (
-                <AccountMenu />
-              ) : (
-                <button
-                  onClick={() => {
-                    router.push("/Auth/Login");
-                  }}
-                  className="bg-primaryColor text-white font-semibold px-10"
-                >
-                  SignIn
-                </button>
-              )}
+              {userDetails?.isLogin && <AccountMenu />}
               <SideDrawerHome />
             </div>
           </div>

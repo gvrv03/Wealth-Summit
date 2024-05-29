@@ -5,9 +5,12 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import { useAppStore } from "@/Context/UseStoreContext";
 import StepOne from "../PaymentSteps/StepOne";
 import PaymentInititate from "@/Components/Payment/PaymentInititate";
+import { htmlString } from "../Utility/EmailTem";
+import { useState } from "react";
 
 export default function BuyingModal({ state, setState }) {
-  const { curBuyPID, setcurBuyPID } = useAppStore();
+  const { curBuyPID, curPayUser } = useAppStore();
+const [isBuy, setisBuy] = useState(false)
   return (
     <>
       <Modal open={state} onClose={() => setState(false)}>
@@ -31,14 +34,15 @@ export default function BuyingModal({ state, setState }) {
             <h2 className="font-semibold">{curBuyPID?.name}</h2>
             <h2>₹ {curBuyPID?.price}</h2>
           </div>
-
           <StepOne />
           <PaymentInititate
             title={curBuyPID?.name}
             amount={curBuyPID?.price}
             produDID={curBuyPID?.productID}
             productDetailID={curBuyPID?.id}
+            setisBuy={setisBuy}
           />
+
           <button
             onClick={() => setState(false)}
             className=" p-2 border border-gray-700 mt-5"
