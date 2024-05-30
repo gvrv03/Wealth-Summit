@@ -24,3 +24,7 @@ export const getUserOrderURL = baseUrl + "api/GetUserOrders";
 
 //Send Email
 export const sendEmailURL = baseUrl + "api/SendEmail";
+
+
+//Conatct URL
+export const contactURL = baseUrl + "api/ContactUs";

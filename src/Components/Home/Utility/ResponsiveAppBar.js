@@ -38,7 +38,7 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
     <>
       <nav
         className={` ${
-          isSticky ? position + " top-0 px-5 " : ""
+          isSticky ? position + " top-0 px-5 " : "px-5"
         }     z-[9999]  top-0 w-full  ${shadow} transition-all backdrop-blur-sm  bgNav   delay-100 ease-linear left-0    md:px-0   border-gray-200`}
       >
         <div className="flex flex-wrap justify-between   gap-5 items-center  m-auto   py-3">
