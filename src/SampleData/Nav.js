@@ -49,17 +49,17 @@ export const MainNav = [
 export const LeagalNav = [
   {
     name: "Privacy Policy",
-    location: "/PrivacyPolicy",
+    location: "/Legal/PrivacyPolicy",
     icon: " uil uil-newspaper",
   },
   {
     name: "Terms & Condition",
-    location: "/TermsCondition",
+    location: "/Legal/TermsCondition",
     icon: " uil  uil-clipboard-alt",
   },
   {
     name: "Return Policy",
-    location: "/ReturnPolicy",
+    location: "/Legal/ReturnPolicy",
     icon: " uil  uil-redo",
   },
 ];

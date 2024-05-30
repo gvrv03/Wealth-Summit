@@ -24,15 +24,15 @@ export default function NotFoundProduct() {
             </svg>
           </div>
         </div>
-        <h1 className="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">
+        <h1 className="mt-5 text-[36px] font-bold text-white lg:text-[50px]">
           404 &#45; Product not found
         </h1>
-        <p className="text-slate-600 mt-5 lg:text-lg">
+        <p className="text-gray-400 mt-5 lg:text-lg">
           The page you are looking for doesn&#39;t exist or <br />
           has been removed&#46;
         </p>
         <button
-          className="pBtn px-10 py-2 mt-5"
+          className="bg-primaryColor p-2 rounded-md px-10 py-2 mt-5"
           onClick={() => {
             router.push("/Products");
           }}

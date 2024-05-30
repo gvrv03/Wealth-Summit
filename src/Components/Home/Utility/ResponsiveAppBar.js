@@ -38,10 +38,10 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
     <>
       <nav
         className={` ${
-          isSticky ? position + " top-0 " : ""
-        }     z-[9999]  top-0 w-full  ${shadow} transition-all backdrop-blur-sm  bgNav   delay-100 ease-linear left-0    md:px-0 px-5  border-gray-200`}
+          isSticky ? position + " top-0 px-5 " : ""
+        }     z-[9999]  top-0 w-full  ${shadow} transition-all backdrop-blur-sm  bgNav   delay-100 ease-linear left-0    md:px-0   border-gray-200`}
       >
-        <div className="flex flex-wrap justify-between   gap-5 items-center  m-auto  md:px-5 py-3">
+        <div className="flex flex-wrap justify-between   gap-5 items-center  m-auto   py-3">
           <div className="  flex justify-between   w-full  gap-5">
             <div className="flex  items-center md:w-full  gap-5">
               <Image
@@ -62,8 +62,8 @@ const ResponsiveAppBar = ({ shadow, position, handleDrawerToggle }) => {
                     router.push(item?.location);
                   }}
                   className={` ${
-                    pathname === item?.location && "text-blue-500 font-semibold"
-                  } flex gap-2 items-center text-white hover:text-blue-500 hover:font-semibold `}
+                    pathname === item?.location ? "text-blue-500 font-semibold":"text-white"
+                  } flex gap-2 items-center  hover:text-blue-500 hover:font-semibold `}
                 >
                   <i className={item?.icon} />
                   <span>{item?.name}</span>
