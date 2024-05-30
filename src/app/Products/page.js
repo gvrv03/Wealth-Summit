@@ -6,7 +6,7 @@ import { Suspense } from "react";
 const page = () => {
   return (
     <Suspense fallback={<AllProductSkeleton />}>
-      Test {/* <AllProductComC /> */}
+      <AllProductComC />
     </Suspense>
   );
 };

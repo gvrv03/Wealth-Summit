@@ -3,7 +3,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 
 const AllProductComC = async () => {
-  const res = await fetch(ProductsURL,{ cache: "no-cache" });
+  const res = await fetch(ProductsURL, { cache: "no-cache" });
   const Data = await res?.json();
   if (Data?.products === undefined) {
     return (
@@ -14,6 +14,7 @@ const AllProductComC = async () => {
   }
   return (
     <div>
+      {Data?.products?.length === 0 && <div className="w-full text-center font-semibold " >No Products Found</div>}
       <div className="grid grid-cols-2 gap-5 md:grid-cols-4 ">
         {Data?.products?.map((item, index) => {
           return (
@@ -27,7 +28,7 @@ const AllProductComC = async () => {
               views={item?.views}
               id={item?._id}
             />
-          )
+          );
         })}
       </div>
     </div>
