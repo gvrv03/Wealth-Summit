@@ -1,16 +1,35 @@
+"use client";
 import { ProductsURL } from "@/helper/allLinks";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 const AllProductComC = async () => {
-  const res = await axios.get(ProductsURL, {
-    headers: {
-      "Cache-Control": "no-cache",
-    },
-  });
-  const Data = await res?.data;
-  if (Data?.products === undefined) {
+  const [products, setproducts] = useState([]);
+  const [loading, setloading] = useState(false);
+  const getData = async () => {
+    try {
+      setloading(true);
+
+      const res = await axios.get(ProductsURL, {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      });
+      const Data = await res?.data;
+      setproducts(Data?.products);
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setloading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center   bg-gray-950  ">
         Error occuured
@@ -19,13 +38,13 @@ const AllProductComC = async () => {
   }
   return (
     <div>
-      {Data?.products?.length === 0 && (
+      {products?.length === 0 && (
         <div className="w-full text-center font-semibold ">
           No Products Found
         </div>
       )}
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-4 ">
-        {Data?.products?.map((item, index) => {
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-4 ">
+        {products?.map((item, index) => {
           return (
             <ProductCard
               key={index}
@@ -45,28 +64,3 @@ const AllProductComC = async () => {
 };
 
 export default AllProductComC;
-
-
-// const [products, setproducts] = useState([]);
-//   const [loading, setloading] = useState(false);
-//   const getData = async () => {
-//     try {
-//       setloading(true);
-
-//       const res = await axios.get(ProductsURL, {
-//         headers: {
-//           "Cache-Control": "no-cache",
-//         },
-//       });
-//       const Data = await res?.data;
-//       setproducts(Data?.products);
-//     } catch (error) {
-//       toast.error(error?.message);
-//     } finally {
-//       setloading(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     getData();
-//   }, []);
