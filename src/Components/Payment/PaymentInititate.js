@@ -6,6 +6,7 @@ import { useAppStore } from "@/Context/UseStoreContext";
 import { DefaultBTN } from "../Home/Utility/Utility";
 import { createOrderURL } from "@/helper/allLinks";
 import { htmlString } from "../Home/Utility/EmailTem";
+import { useRouter } from "next/navigation";
 
 function generateOrderId() {
   const min = 1000000000; // Minimum 10-digit number
@@ -22,8 +23,8 @@ const PaymentInititate = ({
   setisBuy,
 }) => {
   const [loading, setloading] = useState(false);
-  const { curPayUser, sendEmail } = useAppStore();
-
+  const { curPayUser, sendEmail, setisBuyingOpen } = useAppStore();
+  const router = useRouter();
   const handleSendEmail = async (invoice, payID, orderID) => {
     setloading(true);
     await sendEmail({
@@ -142,6 +143,8 @@ const PaymentInititate = ({
         response.razorpay_payment_id,
         response.razorpay_order_id
       );
+      router.push("/Invoice");
+      setisBuyingOpen(false);
       setloading(false);
       return toast.success("Payment Success");
     } else {
@@ -159,12 +162,6 @@ const PaymentInititate = ({
           handlePayment();
         }}
       />
-
-      {loading && (
-        <div className="text-xs w-full text-center ">
-          Waiting for Invoice...
-        </div>
-      )}
     </>
   );
 };

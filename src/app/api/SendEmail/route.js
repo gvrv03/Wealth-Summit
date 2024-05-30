@@ -29,159 +29,196 @@ export const POST = async (req) => {
     if (!getActualLink) {
       throw new Error("Product Not Found");
     }
-    const htmlData = `
-<!DOCTYPE html>
+    const htmlData = `<!DOCTYPE html>
     <html lang="en">
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fabcart</title>
         <style>
-            body{
-                background-color: #F6F6F6; 
+            body {
+                background-color: #F6F6F6;
                 margin: 0;
                 padding: 0;
-            } 
-
-            h1,h2,h3,h4,h5,h6{
+                font-family: Arial, sans-serif;
+            }
+    
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
                 margin: 0;
                 padding: 0;
             }
-            
-            p{
+    
+            p {
                 margin: 0;
                 padding: 0;
             }
-            
-            .container{
+    
+            .container {
                 width: 100%;
                 margin-right: auto;
                 margin-left: auto;
+                padding: 0 15px;
+                box-sizing: border-box;
             }
-            .brand-section{
-            background-color: #0d1033;
-            padding: 10px 40px;
-            }
-            .logo{
-                width: 50%;
-            }
-
-            .row{
+    
+            .brand-section {
+                padding: 20px;
                 display: flex;
-                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
             }
-            .col-6{
-                width: 50%;
-                flex: 0 0 auto;
-            }
-            .text-white{
-                color: #fff;
-            }
-            .company-details{
-                float: right;
+    
+    
+            .company-details {
                 text-align: right;
             }
-            .body-section{
+    
+            .body-section {
                 padding: 16px;
                 border: 1px solid gray;
+                margin-bottom: 20px;
             }
-            .heading{
+    
+            .heading {
                 font-size: 20px;
-                margin-bottom: 08px;
+                margin-bottom: 8px;
             }
-            .sub-heading{
-                color: #262626;
-                margin-bottom: 05px;
+    
+            .sub-heading {
+                margin-bottom: 5px;
             }
-            table{
+    
+            table {
                 background-color: #fff;
                 width: 100%;
                 border-collapse: collapse;
             }
-            table thead tr{
+    
+            table thead tr {
                 border: 1px solid #111;
                 background-color: #f2f2f2;
             }
+    
             table td {
                 vertical-align: middle !important;
                 text-align: center;
             }
-            table th, table td {
-                padding-top: 08px;
-                padding-bottom: 08px;
+    
+            table th,
+            table td {
+                padding-top: 8px;
+                padding-bottom: 8px;
             }
-            .table-bordered{
+    
+            .table-bordered {
                 box-shadow: 0px 0px 5px 0.5px gray;
             }
-            .table-bordered td, .table-bordered th {
+    
+            .table-bordered td,
+            .table-bordered th {
                 border: 1px solid #dee2e6;
             }
-            .text-right{
+    
+            .text-right {
                 text-align: end;
             }
-            .w-20{
+    
+            .w-20 {
                 width: 20%;
             }
-            .float-right{
+    
+            .float-right {
                 float: right;
+            }
+    
+            @media (max-width: 768px) {
+                .brand-section {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+    
+                .company-details {
+                    text-align: left;
+                    margin-top: 10px;
+                }
+    
+                .row {
+                    flex-direction: column;
+                }
+    
+                .col-6 {
+                    width: 100%;
+                    text-align: left;
+                    margin-bottom: 20px;
+                }
+    
+                .text-right {
+                    text-align: left;
+                }
             }
         </style>
     </head>
-    <body>
-
+    
+    <body style="background-color: white; color: black;margin-top: 10px; ">
         <div class="container">
-            <div class="brand-section">
-                <div class="row">
-                    <div class="col-6">
-                        <h1 class="text-white">WEALTH SUMMIT</h1>
-                    </div>
-                    <div class="col-6">
-                        <div class="company-details">
-                        <p class="text-white"> wealthsummit@wealthsummit.shop</p>
-                        <p class="text-white">INDIA</p>
-                        </div>
-                    </div>
+            <div class="brand-section" style="color: white; background-color: blue;">
+                <div>
+                    <h1 style="font-size: 20px;">WEALTH SUMMIT</h1>
+                </div>
+                <div class="company-details">
+                    <p>wealthsummit@wealthsummit.shop</p>
+                    <p>INDIA</p>
                 </div>
             </div>
-
+    
             <div class="body-section">
                 <div class="row">
-                    <div class="col-6">
-                        <h2 class="heading">Invoice No.: ${ProductDetail?.invoice} </h2>
-                        <p class="sub-heading">Order Date: ${formattedDate}</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="sub-heading">Full Name: ${ProductDetail?.name}</p>
-                        <p class="sub-heading">EMAIL:  ${ProductDetail?.email}</p>
+                    <div class=" col-6">
+                        <h2 class="heading">Invoice No.:<span
+                                style="font-size: 15px; font-weight: 400; ">${ProductDetail?.invoice}</span> </h2>
+                        <h3 style="margin-top: 5px; font-weight: 500; ">Order Date:<span
+                                style="font-size: 15px; font-weight: 400; "> ${formattedDate}</span> </h3>
+                        <h3 style="margin-top: 5px; font-weight: 500; ">Full Name: <span
+                                style="font-size: 15px; font-weight: 400; ">${ProductDetail?.name}</span> </h3>
+                        <h3 style="margin-top: 5px; font-weight: 500; ">EMAIL:<span
+                                style="font-size: 15px; font-weight: 400; ">${ProductDetail?.email}</span> </h3>
                     </div>
                 </div>
+    
+                <div class="body-section" style="margin-top: 10px;">
+                    <h3 class="heading">Ordered Items</h3>
+                    <br>
+                    <h3 class="heading"></h3>
+                    <div style="border:2px solid white; padding: 20px;">
+                        <h4 style="margin-top: 5px;">${ProductDetail?.title}</h4>
+                        <h5 style="margin-top: 5px;">Your Product: <a href=${getActualLink?.Product}>Download Now</a></h5>
+                        <h5 style="margin-top: 5px;">Total Cost: <span
+                                style="font-size: 15px; font-weight: 400; ">₹${ProductDetail?.amount}</span> </h5>
+                    </div>
+                    <br>
+                    <h3 style="margin-top: 5px;">Payment Status: Paid </h3>
+                    <h3 style="margin-top: 5px;">Payment ID: <span
+                            style="font-size: 15px; font-weight: 400; ">${ProductDetail?.payID}</span> </h3>
+                    <h3 style="margin-top: 5px;">Order ID: <span
+                            style="font-size: 15px; font-weight: 400; ">${ProductDetail?.orderID}</span> </h3>
+                    <h3 style="margin-top: 5px;">Payment Mode: Razorpay </h3>
+                </div>
+    
+                <div class="body-section">
+                    <p>&copy; Copyright 2021 - Wealth Summit. All rights reserved.
+                        <a href="https://www.wealthsummit.shop/">www.wealthsummit.shop</a>
+                    </p>
+                </div>
             </div>
-
-            <div class="body-section">
-                <h3 class="heading">Ordered Items</h3>
-                <br>
-
-                <h3 class="heading"> ${ProductDetail?.title}</h3>
-                <h4> Your Product : <a href=${getActualLink?.Product} >Download Now</a>
-                </h4>
-                <br>
-                <h4 >Total Cost : ${ProductDetail?.amount}</h4>
-                
-                <br>
-                <h3 >Payment Status: Paid</h3>
-                <h3 >Payment ID : ${ProductDetail?.payID}</h3>
-                <h3 >Order ID : ${ProductDetail?.orderID}</h3>
-                <h3 >Payment Mode: Razorpay</h3>
-            </div>
-
-            <div class="body-section">
-                <p>&copy; Copyright 2021 - Wealth Summit. All rights reserved. 
-                    <a href="https://www.wealthsummit.shop/" class="float-right">www.wealthsummit.shop</a>
-                </p>
-            </div>      
-        </div>      
-
+    
     </body>
+    
     </html>`;
 
     const { data, error } = await resend.emails.send({

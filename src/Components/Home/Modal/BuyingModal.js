@@ -43,16 +43,13 @@ export default function BuyingModal({ state, setState }) {
             productDetailID={curBuyPID?.id}
             setisBuy={setisBuy}
           />
-          <InvoiceTemp inVoice={inVoice} />
 
-          {!inVoice && (
             <button
               onClick={() => setState(false)}
               className=" p-2 border border-gray-700 mt-5"
             >
               Cancel Payment
             </button>
-          )}
         </ModalDialog>
       </Modal>
     </>

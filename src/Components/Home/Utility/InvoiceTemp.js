@@ -1,15 +1,16 @@
 "use client";
 import { useAppStore } from "@/Context/UseStoreContext";
 import React from "react";
+import ResponsiveAppBar from "./ResponsiveAppBar";
 import { DefaultBTN } from "./Utility";
 
 const InvoiceTemp = ({ inVoice }) => {
   const { handleGeneratePDF, reportTemplateRef, download } = useAppStore();
   return (
-    <div>
+    <div className="container m-auto">
+      <ResponsiveAppBar shadow=" " position="fixed" />
       <div
         ref={reportTemplateRef}
-        className="text-white bg-ground"
         dangerouslySetInnerHTML={{ __html: inVoice }}
       />
       {inVoice && (
