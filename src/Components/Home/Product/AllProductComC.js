@@ -1,9 +1,40 @@
+"use client";
+import AllProductSkeleton, {
+  ProductSkeleton,
+} from "@/Components/Skeleton/AllProductSkeleton";
 import { ProductsURL } from "@/helper/allLinks";
 import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 import ProductCard from "./ProductCard";
 
-const AllProductComC = ({ products }) => {
+const AllProductComC = () => {
+  const [products, setproducts] = useState([]);
+  const [loading, setloading] = useState(false);
+  const getData = async () => {
+    try {
+      setloading(true);
+
+      const res = await axios.get(ProductsURL, {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      });
+      const Data = await res?.data;
+      setproducts(Data?.products);
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setloading(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   if (products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center   bg-gray-950  ">
@@ -13,7 +44,8 @@ const AllProductComC = ({ products }) => {
   }
   return (
     <div>
-      {products?.length === 0 && (
+      {loading && <AllProductSkeleton />}
+      {!loading && products?.length === 0 && (
         <div className="w-full text-center font-semibold ">
           No Products Found
         </div>
