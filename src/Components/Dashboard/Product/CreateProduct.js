@@ -120,6 +120,7 @@ const CreateProduct = () => {
             }}
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
+              console.log(res);
               setthumbnail(res[0]?.url);
               toast.success("Upload Completed");
             }}

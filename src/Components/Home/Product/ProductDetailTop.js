@@ -1,4 +1,5 @@
 import React from "react";
+import CountdownTimer from "../Utility/CountDownTimer";
 import ProductSlideShow from "./ProductSlideShow";
 
 const ProductDetailTop = ({ product }) => {
@@ -26,6 +27,8 @@ const ProductDetailTop = ({ product }) => {
           off
         </p>
       </div>
+
+      <CountdownTimer/>
     </div>
   );
 };

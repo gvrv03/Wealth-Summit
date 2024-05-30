@@ -2,7 +2,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="text-justify border p-5 border-gray-700  rounded-sm mt-5 md:rounded-md">
+    <div className="text-justify md:border md:p-5 border-gray-700  rounded-sm mt-5 md:rounded-md">
       <h1>Privacy Policy</h1>
       <p>Last updated: May 30, 2024</p>
       <p>

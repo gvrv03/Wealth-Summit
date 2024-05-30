@@ -31,7 +31,7 @@ const ProductDetal = async ({ searchParams }) => {
             dangerouslySetInnerHTML={{ __html: product?.artical }}
           />
         </div>
-        <div className=" hidden md:flex bg-ground md:border  w-full md:w-[25%]  border-gray-700  rounded-sm md:rounded-md   gap-2 flex-col  p-5 text-justify ">
+        <div className="  fixed md:relative bottom-0 left-0 md:flex bg-ground md:border  w-full md:w-[25%]  border-gray-700  rounded-sm md:rounded-md   gap-2 flex-col  p-5 text-justify ">
           <BuyBtn
             product={{
               productID: product?.productID,

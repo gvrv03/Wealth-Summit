@@ -1,7 +1,7 @@
 import React from "react";
 
 const TermsCondition = () => (
-  <div className="text-justify border p-5 border-gray-700 rounded-sm mt-5 md:rounded-md">
+  <div className="text-justify md:border md:p-5 border-gray-700  rounded-sm mt-5 md:rounded-md">
     <h1 className="text-2xl font-bold mb-4">
       Terms and Conditions for Wealth Summit
     </h1>
@@ -66,24 +66,24 @@ const TermsCondition = () => (
 
     <h2 className="text-lg font-semibold mb-2">Your Content</h2>
     <p className="mb-4">
-      In these Website Standard Terms and Conditions, &quot;Your Content&quot; shall mean
-      any audio, video text, images or other material you choose to display on
-      this Website. By displaying Your Content, you grant Wealth Summit a
-      non-exclusive, worldwide irrevocable, sub licensable license to use,
-      reproduce, adapt, publish, translate and distribute it in any and all
+      In these Website Standard Terms and Conditions, &quot;Your Content&quot;
+      shall mean any audio, video text, images or other material you choose to
+      display on this Website. By displaying Your Content, you grant Wealth
+      Summit a non-exclusive, worldwide irrevocable, sub licensable license to
+      use, reproduce, adapt, publish, translate and distribute it in any and all
       media.
     </p>
     <p className="mb-4">
-      Your Content must be your own and must not be invading any third-party&apos;s
-      rights. Wealth Summit reserves the right to remove any of Your Content
-      from this Website at any time without notice.
+      Your Content must be your own and must not be invading any
+      third-party&apos;s rights. Wealth Summit reserves the right to remove any
+      of Your Content from this Website at any time without notice.
     </p>
 
     <h2 className="text-lg font-semibold mb-2">No warranties</h2>
     <p className="mb-4">
-      This Website is provided &quot;as is,&quot; with all faults, and Wealth Summit
-      express no representations or warranties, of any kind related to this
-      Website or the materials contained on this Website. Also, nothing
+      This Website is provided &quot;as is,&quot; with all faults, and Wealth
+      Summit express no representations or warranties, of any kind related to
+      this Website or the materials contained on this Website. Also, nothing
       contained on this Website shall be interpreted as advising you.
     </p>
 

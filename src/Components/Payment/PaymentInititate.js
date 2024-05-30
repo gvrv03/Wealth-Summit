@@ -27,8 +27,8 @@ const PaymentInititate = ({
   const handleSendEmail = async (invoice, payID, orderID) => {
     setloading(true);
     await sendEmail({
-      userEmails: "itsgaurav3112003@gmail.com",
-      subject: "Hey I Am",
+      userEmails: curPayUser?.email,
+      subject: "Thanks you for buying " + title,
       ProductDetail: {
         invoice,
         email: curPayUser?.email,
@@ -151,13 +151,21 @@ const PaymentInititate = ({
   };
 
   return (
-    <DefaultBTN
-      name="Buy Now"
-      loading={loading}
-      clickHandle={() => {
-        handlePayment();
-      }}
-    />
+    <>
+      <DefaultBTN
+        name="Buy Now"
+        loading={loading}
+        clickHandle={() => {
+          handlePayment();
+        }}
+      />
+
+      {loading && (
+        <div className="text-xs w-full text-center ">
+          Waiting for Invoice...
+        </div>
+      )}
+    </>
   );
 };
 

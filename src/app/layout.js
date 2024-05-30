@@ -15,18 +15,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="shortcut icon" href="/logo.jpg" type="image/x-icon" />
         <link
           rel="stylesheet"
           href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
         />
       </head>
-      <body className=" bg-ground  text-white" >
+      <body className=" bg-ground  text-white">
         <UseStoreContextProvider>
           <UserAuthContexProvider>
             <RenderAllModal />
             <Toaster position="top-center" reverseOrder={false} />
             {children}
-            <Footer/>
+            <Footer />
           </UserAuthContexProvider>
         </UseStoreContextProvider>{" "}
       </body>

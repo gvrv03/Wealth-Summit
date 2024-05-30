@@ -1,8 +1,8 @@
 import React from "react";
 
 const NoReturnPolicy = () => {
-  return (
-    <div className="text-justify border p-5 border-gray-700  rounded-sm mt-5 md:rounded-md">
+  return (    <div className="text-justify md:border md:p-5 border-gray-700  rounded-sm mt-5 md:rounded-md">
+
       <h1 className="text-3xl font-bold mb-4">
         No Return Policy for Digital Products
       </h1>

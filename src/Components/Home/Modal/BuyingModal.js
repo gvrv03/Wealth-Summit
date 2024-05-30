@@ -7,10 +7,11 @@ import StepOne from "../PaymentSteps/StepOne";
 import PaymentInititate from "@/Components/Payment/PaymentInititate";
 import { htmlString } from "../Utility/EmailTem";
 import { useState } from "react";
+import InvoiceTemp from "../Utility/InvoiceTemp";
 
 export default function BuyingModal({ state, setState }) {
-  const { curBuyPID, curPayUser } = useAppStore();
-const [isBuy, setisBuy] = useState(false)
+  const { curBuyPID, inVoice } = useAppStore();
+  const [isBuy, setisBuy] = useState(false);
   return (
     <>
       <Modal open={state} onClose={() => setState(false)}>
@@ -42,13 +43,16 @@ const [isBuy, setisBuy] = useState(false)
             productDetailID={curBuyPID?.id}
             setisBuy={setisBuy}
           />
+          <InvoiceTemp inVoice={inVoice} />
 
-          <button
-            onClick={() => setState(false)}
-            className=" p-2 border border-gray-700 mt-5"
-          >
-            Cancel Payment
-          </button>
+          {!inVoice && (
+            <button
+              onClick={() => setState(false)}
+              className=" p-2 border border-gray-700 mt-5"
+            >
+              Cancel Payment
+            </button>
+          )}
         </ModalDialog>
       </Modal>
     </>
