@@ -5,10 +5,15 @@ import "react-slideshow-image/dist/styles.css";
 
 const ProductSlideShow = ({ images }) => {
   return (
-    <div className="slide-container border-gray-700  md:p-5 ">
-      <Slide arrows={true} indicators={true} duration={1000}>
+    <div className="slide-container border-gray-700  mb-5 ">
+      <Slide arrows={false} indicators={false} infinite={false}>
         {images?.map((slideImage, index) => (
-          <img src={slideImage} className="m-auto md:w-[20%] w-full " key={index} alt="" />
+          <img
+            src={slideImage}
+            className="m-auto  w-full  h-full "
+            key={index}
+            alt="images"
+          />
         ))}
       </Slide>
     </div>

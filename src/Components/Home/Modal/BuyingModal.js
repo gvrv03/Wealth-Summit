@@ -33,7 +33,7 @@ export default function BuyingModal({ state, setState }) {
         >
           <div className="flex justify-between items-center">
             <h2 className="font-semibold">{curBuyPID?.name}</h2>
-            <h2>₹ {curBuyPID?.price}</h2>
+            <h2>₹{curBuyPID?.price}</h2>
           </div>
           <StepOne />
           <PaymentInititate

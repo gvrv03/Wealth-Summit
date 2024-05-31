@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { DefaultBTN } from "../Utility/Utility";
 
 const ProductCard = ({
   description,
@@ -34,8 +35,8 @@ const ProductCard = ({
         </p>
       </div>
       <div className="flex mt-5">
-        <button
-          onClick={() => {
+        <DefaultBTN
+          clickHandle={() => {
             router.push(
               "/Products/Product/" +
                 title.replaceAll(" ", "_") +
@@ -43,10 +44,9 @@ const ProductCard = ({
                 id
             );
           }}
-          className="font-semibold bg-primaryColor border-gray-800 w-full rounded-sm shadow-md p-2"
-        >
-          View Detail
-        </button>
+         name="View Detail"
+          styleCSS="font-semibold cursor-pointer border-gray-800 w-full rounded-sm shadow-md p-2"
+        />
       </div>
     </div>
   );

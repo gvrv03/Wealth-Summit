@@ -6,7 +6,7 @@ export const DefaultBTN = ({ name, loading, clickHandle ,styleCSS}) => {
       type="submit"
       disabled={loading ? true : false}
       onClick={clickHandle}
-      className={` ${styleCSS} bg-primaryColor text-white font-semibold py-2`}
+      className={` ${styleCSS}  bg-[#ffe100] text-black  font-semibold py-2`}
     >
       {loading ? <Spinner /> : name}
     </button>

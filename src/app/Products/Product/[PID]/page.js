@@ -33,7 +33,7 @@ const ProductDetal = async ({ searchParams }) => {
             dangerouslySetInnerHTML={{ __html: product?.artical }}
           />
         </div>
-        <div className="  fixed md:relative md:z-0 z-10 bottom-0 left-0 md:flex bg-ground md:border  w-full md:w-[25%]  border-gray-700  rounded-sm md:rounded-md   gap-2 flex-col  p-5 text-justify ">
+        <div className="  fixed md:relative md:z-0 z-10 bottom-0 left-0 md:flex bg-ground md:border  w-full md:w-[30%]  border-gray-700  rounded-sm md:rounded-md   gap-2 flex-col  p-5 text-justify ">
           <BuyBtn
             product={{
               productID: product?.productID,
@@ -42,7 +42,7 @@ const ProductDetal = async ({ searchParams }) => {
               price: product?.pricing?.price,
             }}
           />
-          <div className="md:inline-block  hidden">
+          <div className=" mt-10 md:inline-block  hidden">
             <CardStack items={product?.userImages} />
           </div>
         </div>
