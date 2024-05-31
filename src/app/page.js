@@ -3,12 +3,11 @@ import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
 import { DefaultBTN } from "@/Components/Home/Utility/Utility";
 import { subscribeURL } from "@/helper/allLinks";
 import axios from "axios";
-import AllProductComC from "./Products/page";
 import React from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-const page = () => {
+const HomePage = () => {
   const [email, setemail] = useState("");
   const [loading, setloading] = useState(false);
   const handleSubscribe = async (e) => {
@@ -73,4 +72,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default HomePage;
