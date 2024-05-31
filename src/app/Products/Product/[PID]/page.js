@@ -47,7 +47,7 @@ const ProductDetal = async ({ searchParams }) => {
           </div>
         </div>
       </div>
-      <div className="md:hidden">
+      <div className=" mb-20 md:hidden">
         <CardStack items={product?.userImages} />
       </div>{" "}
     </div>

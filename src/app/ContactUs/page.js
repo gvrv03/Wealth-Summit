@@ -33,7 +33,6 @@ const ContactUS = () => {
         return toast.success(res?.message);
       }
       return toast.error(res?.error);
-
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -43,9 +42,11 @@ const ContactUS = () => {
 
   return (
     <section className="body-font relative">
-      <h3 className="text-white  font-bold text-2xl py-5">Contact Us</h3>
       <div className="container mx-auto">
         <div className="bg-ground p-5 border border-gray-700 rounded-sm md:rounded-md lg:w-1/2 md:w-2/3 mx-auto">
+          <h3 className="text-white  font-bold text-2xl ">Contact Us</h3>
+          <div className="text-gray-400 my-2" > wealthsummit@wealthsummit.shop</div>
+
           <form onSubmit={handleSubmit}>
             <div className="flex flex-wrap">
               {/* Name */}
@@ -121,9 +122,11 @@ const ContactUS = () => {
               </div>
               {/* Submit Button */}
               <div className="p-2 w-full">
-             
-
-                <DefaultBTN loading={loading} name="Submit"  styleCSS="px-5 w-full md:w-fit md:rounded-md rounded-sm" />
+                <DefaultBTN
+                  loading={loading}
+                  name="Submit"
+                  styleCSS="px-5 w-full md:w-fit md:rounded-md rounded-sm"
+                />
               </div>
             </div>
           </form>
