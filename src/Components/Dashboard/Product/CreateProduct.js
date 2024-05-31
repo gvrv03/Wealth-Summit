@@ -16,7 +16,7 @@ const CreateProduct = () => {
   //Images
   const [thumbnail, setthumbnail] = useState("");
   const [images, setimages] = useState([]);
-
+  const [userImages, setuserImages] = useState([]);
   // Pricing
   const [price, setprice] = useState(null);
   const [compareprice, setcompareprice] = useState(null);
@@ -43,7 +43,8 @@ const CreateProduct = () => {
           status: status,
           artical,
           images: images,
-          thumbnail: thumbnail,
+          thumbnail,
+          userImages,
           pricing: {
             price,
             comAtPrice: compareprice,
@@ -170,7 +171,43 @@ const CreateProduct = () => {
               {images?.map((item, index) => {
                 return (
                   <div className=" p-5" key={index}>
-                    <img src={item} alt={item?.name} />
+                    <img src={item} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="flex w-full bg-secondary p-5 gap-5">
+          <UploadDropzone
+            className="px-8 w-full rounded-none "
+            appearance={{
+              container:
+                " outline-none md:w-96 w-full hover:cursor-pointer border-none bg-ground ",
+              button: "bg-primaryColor  text-xs w-full mt-5",
+              uploadIcon: "w-10 mt-2",
+              label: "text-xs mt-5",
+              allowedContent: "text-xs",
+            }}
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              setuserImages((prev) => [...prev, res[0].url]);
+              toast.success("Upload Completed");
+            }}
+            onUploadError={(error) => {
+              toast.error(`ERROR! ${error.message}`);
+            }}
+          />
+          <div className="w-full">
+            <h2 className="font-semibold">Preview</h2>
+            <h4 className=" text-gray-500 text-xs">
+              {userImages?.length == 0 && "Thumbnail not uploaded"}
+            </h4>
+            <div className="grid  grid-cols-4 md:grid-cols-6">
+              {userImages?.map((item, index) => {
+                return (
+                  <div className=" p-5" key={index}>
+                    <img src={item} />
                   </div>
                 );
               })}

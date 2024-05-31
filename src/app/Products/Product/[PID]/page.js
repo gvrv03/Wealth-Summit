@@ -5,6 +5,8 @@ import NotFoundProduct from "../not-found";
 import "suneditor/dist/css/suneditor.min.css";
 import ProductDetailTop from "@/Components/Home/Product/ProductDetailTop";
 import BuyBtn from "@/Components/Home/Product/BuyBtn";
+import { cn } from "@/Components/Home/Utility/cn";
+import { CardStack } from "@/Components/Home/Utility/CardStack";
 
 const ProductDetal = async ({ searchParams }) => {
   const res = await axios.get(getSingleProductURL + searchParams.product, {
@@ -40,10 +42,18 @@ const ProductDetal = async ({ searchParams }) => {
               price: product?.pricing?.price,
             }}
           />
+          <div className="md:inline-block  hidden">
+            <CardStack items={product?.userImages} />
+          </div>
         </div>
       </div>
+      <div className="md:hidden">
+        <CardStack items={product?.userImages} />
+      </div>{" "}
     </div>
   );
 };
 
 export default ProductDetal;
+
+

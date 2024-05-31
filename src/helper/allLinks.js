@@ -28,3 +28,7 @@ export const sendEmailURL = baseUrl + "api/SendEmail";
 
 //Conatct URL
 export const contactURL = baseUrl + "api/ContactUs";
+
+
+//Subscribe URL
+export const subscribeURL= baseUrl + "api/Subscribe";

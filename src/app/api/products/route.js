@@ -11,7 +11,7 @@ export const POST = RootAuth(async (request) => {
   try {
     const Data = await request.json();
     const { productDetail, product } = Data;
-    const { addeBy, title, description, artical, images, thumbnail, status } =
+    const { addeBy, title, description, artical, images, thumbnail, status ,userImages} =
       productDetail;
     if (
       !addeBy ||
@@ -20,7 +20,7 @@ export const POST = RootAuth(async (request) => {
       !artical ||
       !images ||
       !thumbnail ||
-      !status
+      !status || ! userImages
     ) {
       throw new Error("Fill all the Fields!");
     }

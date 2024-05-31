@@ -11,9 +11,7 @@ const AllProductComC = async () => {
       "Cache-Control": "no-cache",
     },
   });
-  
   const { products } = await res?.data;
-
   if (!products) {
     return (
       <div className="h-screen w-full grid place-items-center   bg-gray-950  ">
