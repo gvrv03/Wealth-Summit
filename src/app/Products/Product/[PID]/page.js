@@ -9,7 +9,7 @@ import { cn } from "@/Components/Home/Utility/cn";
 import { CardStack } from "@/Components/Home/Utility/CardStack";
 
 const ProductDetal = async ({ params}) => {
-  const res = await axios.get(getSingleProductURL + params?.pid, {
+  const res = await axios.get(getSingleProductURL + params?.PID, {
     headers: {
       "Cache-Control": "no-cache",
     },
