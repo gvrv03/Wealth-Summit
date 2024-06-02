@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import Image from "next/image";
 
 let interval;
 
@@ -41,7 +42,14 @@ export const CardStack = ({ items, offset, scaleFactor }) => {
               zIndex: cards.length - index, //  decrease z-index for the cards that are behind
             }}
           >
-            <img src={card} className="h-full w-full rounded-md" />
+            <Image
+            loading="lazy"
+            src={card}
+            width={100}
+            height={100}
+            className="m-auto   w-full h-full "
+            alt="images"
+          />
           </motion.div>
         );
       })}

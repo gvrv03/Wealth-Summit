@@ -3,6 +3,8 @@ import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
 import { DefaultBTN } from "@/Components/Home/Utility/Utility";
 import { subscribeURL } from "@/helper/allLinks";
 import axios from "axios";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -26,46 +28,57 @@ const HomePage = () => {
       setloading(false);
     }
   };
+  const router = useRouter();
   return (
-    <section className="bgPattern">
-      <div class=" container  m-auto text-white body-font">
+    <section className="bgPattern ">
+      <div className=" container  m-auto text-white body-font">
         <ResponsiveAppBar shadow=" " position="fixed" />
 
-        <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-          <img
-            class=" md:w-60 w-48 mb-10 object-cover object-center rounded-full"
+        <div className="container mx-auto flex px-5 min-h-[90vh]    items-center justify-center flex-col">
+          <Image
+            className=" md:w-60 w-48 mb-10 object-cover object-center rounded-full"
             alt="hero"
+            width={100}
+            height={100}
+            loading="lazy"
             src="/logo.jpg"
           />
-          <div class="text-center lg:w-2/3 w-full">
+          <div className="text-center lg:w-2/3 w-full">
             <h2 className="font-semibold  text-2xl py-5 text-gray-200">
-              Money x Luxuary{" "}
+              Money x Luxury{" "}
             </h2>
             <p className="text-gray-400">
               We provide a wide range of digital resources designed to enhance
               your life and contribute to your overall well-being and
-              prosperity. Our offerings are tailored to help you achieve
-              financial success, improve your knowledge, and streamline your
-              daily activities, ensuring that you can lead a more productive,
-              fulfilling, and wealthy life.
+              prosperity.
             </p>
-            <div class=" mt-5 flex justify-center gap-5">
+            <form
+              onSubmit={handleSubscribe}
+              className=" mt-5 flex justify-center border border-gray-700 "
+            >
               <input
                 type="email"
                 onChange={(e) => {
                   setemail(e.target.value);
                 }}
+                required={true}
                 placeholder="Ex. joejordan@gmail.com"
-                className=" px-5  w-full bg-ground border border-gray-700 "
+                className=" px-5  w-full  outline-none bg-ground  "
               />
               <DefaultBTN
                 name="Subscribe"
-                clickHandle={handleSubscribe}
                 loading={loading}
-                styleCSS=" border border-gray-700 bg-ground inline-flex text-white bg-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                styleCSS="  bg-ground inline-flex text-white bg-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               />
-            </div>
+            </form>
           </div>
+          <DefaultBTN
+            clickHandle={() => {
+              router.push("/Products");
+            }}
+            name="View Products"
+            styleCSS="px-5 mt-5 font-semibold  rounded-sm md:rounded-md"
+          />{" "}
         </div>
       </div>
     </section>

@@ -7,21 +7,18 @@ const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
 });
 
-const TextEditor = ({ setartical, artical  ,height ,width }) => {
+const TextEditor = ({ setartical, artical, height, width }) => {
   return (
-     <div className="mt-2" >
-       <SunEditor
-        // value={valueText}
-        defaultValue=""
+    <div className="mt-2">
+      <SunEditor
+        defaultValue={artical ? artical : "Write something"}
         placeholder="Write Something"
         onChange={(content) => {
           setartical(content);
         }}
-        
         //   placeholder="Write brief information"
         height={height}
         width={width}
-        
         setOptions={{
           mode: "classic",
 
@@ -116,7 +113,7 @@ const TextEditor = ({ setartical, artical  ,height ,width }) => {
           "lang(In nodejs)": "en",
         }}
       />
-     </div>
+    </div>
   );
 };
 

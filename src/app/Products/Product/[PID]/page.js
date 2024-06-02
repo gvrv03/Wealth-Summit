@@ -8,8 +8,8 @@ import BuyBtn from "@/Components/Home/Product/BuyBtn";
 import { cn } from "@/Components/Home/Utility/cn";
 import { CardStack } from "@/Components/Home/Utility/CardStack";
 
-const ProductDetal = async ({ searchParams }) => {
-  const res = await axios.get(getSingleProductURL + searchParams.product, {
+const ProductDetal = async ({ params}) => {
+  const res = await axios.get(getSingleProductURL + params?.pid, {
     headers: {
       "Cache-Control": "no-cache",
     },

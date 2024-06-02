@@ -7,8 +7,8 @@ import React from "react";
 const Footer = () => {
   const router = useRouter();
   return (
-    <>
-      <div className="container md:flex-row flex-col gap-5 items-center flex justify-between m-auto p-5">
+    <div >
+      <div className="container  md:flex-row flex-col gap-5 items-center flex justify-between m-auto p-5">
         <div className="flex md:flex-row flex-col justify-center items-center gap-5">
           <Image
             src="/logo.jpg"
@@ -26,7 +26,7 @@ const Footer = () => {
                   router.push(item?.location);
                 }}
                 key={index}
-                className={` ${item?.icon} uil flex items-center gap-2 hover:text-white hover:font-semibold`}
+                className={` ${item?.icon} md:text-xl text-sm uil flex items-center gap-2 hover:text-white hover:font-semibold`}
               >
                 {item.name}
               </button>
@@ -34,7 +34,7 @@ const Footer = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

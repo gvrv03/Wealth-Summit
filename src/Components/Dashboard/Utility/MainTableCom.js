@@ -44,7 +44,7 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                     className="bg-secondary"
                     style={{
                       fontSize: "12px",
-                      color:"white",
+                      color: "white",
                       border: "none",
                       padding: "8px",
                       textTransform: "capitalize",
@@ -61,7 +61,7 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                     className="bg-secondary"
                     style={{
                       fontSize: "12px",
-                      color:"white",
+                      color: "white",
                       background: "#212/22b",
                       border: "none",
                       padding: "8px",
@@ -81,7 +81,8 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                     col === "keywords" ||
                     col === "reviews" ||
                     col === "notification" ||
-                    col === "password"
+                    col === "password" ||
+                    col === "UserImages"
                       ? null
                       : col}
                   </TableCell>
@@ -91,7 +92,7 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                     className="bg-secondary"
                     style={{
                       fontSize: "12px",
-                      color:"white",
+                      color: "white",
                       border: "none",
                       padding: "8px",
                       textTransform: "capitalize",
@@ -114,7 +115,6 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                         padding: "8px",
                         border: "none",
                         color: "white",
-
                       }}
                       align="center"
                     >
@@ -142,6 +142,7 @@ export default function MaintableCom({ data, colData, isLoading, count }) {
                           col === "productOrganization" ||
                           col === "thumbnail" ||
                           col === "keywords" ||
+                          col === "UserImages" ||
                           col === "reviews" ||
                           col === "notification" ||
                           col === "password" ? null : col === "role" ? (

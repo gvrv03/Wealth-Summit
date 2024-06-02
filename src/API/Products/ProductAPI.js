@@ -1,4 +1,8 @@
-import { ProductsURL, savedProductToFavoriteURL } from "@/helper/allLinks";
+import {
+  getSingleProductURL,
+  ProductsURL,
+  savedProductToFavoriteURL,
+} from "@/helper/allLinks";
 import axios from "axios";
 
 export const fetchProductsAPI = async (data) => {
@@ -18,5 +22,15 @@ export const AddProduct = async (data) => {
     Authorization: "Bearer " + localStorage.getItem("token"),
   };
   const response = await axios.post(ProductsURL, data, { headers });
+  return await response?.data;
+};
+
+export const updateProductAPI = async (data) => {
+  const headers = {
+    Authorization: "Bearer " + localStorage.getItem("token"),
+  };
+  const response = await axios.post(getSingleProductURL + data?.pID, data, {
+    headers,
+  });
   return await response?.data;
 };

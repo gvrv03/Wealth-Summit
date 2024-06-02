@@ -166,21 +166,21 @@ export const POST = async (req) => {
     </head>
     
     <body style="background-color: white; color: black;margin-top: 10px; ">
-        <div class="container">
-            <div class="brand-section" style="color: white; background-color: blue;">
+        <div className="container">
+            <div className="brand-section" style="color: white; background-color: blue;">
                 <div>
                     <h1 style="font-size: 20px;">WEALTH SUMMIT</h1>
                 </div>
-                <div class="company-details">
+                <div className="company-details">
                     <p>wealthsummit@wealthsummit.shop</p>
                     <p>INDIA</p>
                 </div>
             </div>
     
-            <div class="body-section">
-                <div class="row">
-                    <div class=" col-6">
-                        <h2 class="heading">Invoice No.:<span
+            <div className="body-section">
+                <div className="row">
+                    <div className=" col-6">
+                        <h2 className="heading">Invoice No.:<span
                                 style="font-size: 15px; font-weight: 400; ">${ProductDetail?.invoice}</span> </h2>
                         <h3 style="margin-top: 5px; font-weight: 500; ">Order Date:<span
                                 style="font-size: 15px; font-weight: 400; "> ${formattedDate}</span> </h3>
@@ -191,10 +191,10 @@ export const POST = async (req) => {
                     </div>
                 </div>
     
-                <div class="body-section" style="margin-top: 10px;">
-                    <h3 class="heading">Ordered Items</h3>
+                <div className="body-section" style="margin-top: 10px;">
+                    <h3 className="heading">Ordered Items</h3>
                     <br>
-                    <h3 class="heading"></h3>
+                    <h3 className="heading"></h3>
                     <div style="border:2px solid white; padding: 20px;">
                         <h4 style="margin-top: 5px;">${ProductDetail?.title}</h4>
                         <h5 style="margin-top: 5px;">Your Product: <a href=${getActualLink?.Product}>Download Now</a></h5>
@@ -210,7 +210,7 @@ export const POST = async (req) => {
                     <h3 style="margin-top: 5px;">Payment Mode: Razorpay </h3>
                 </div>
     
-                <div class="body-section">
+                <div className="body-section">
                     <p>&copy; Copyright 2021 - Wealth Summit. All rights reserved.
                         <a href="https://www.wealthsummit.shop/">www.wealthsummit.shop</a>
                     </p>

@@ -95,39 +95,39 @@ export const htmlString = `
 </head>
 <body>
 
-    <div class="container">
-        <div class="brand-section">
-            <div class="row">
-                <div class="col-6">
-                    <h1 class="text-white">WEALTH SUMMIT</h1>
+    <div className="container">
+        <div className="brand-section">
+            <div className="row">
+                <div className="col-6">
+                    <h1 className="text-white">WEALTH SUMMIT</h1>
                 </div>
-                <div class="col-6">
-                    <div class="company-details">
-                        <p class="text-white">At, Yavatmal Dist. Maharashtra, INDIA</p>
-                        <p class="text-white"> wealthsummit@wealthsummit.shop</p>
+                <div className="col-6">
+                    <div className="company-details">
+                        <p className="text-white">At, Yavatmal Dist. Maharashtra, INDIA</p>
+                        <p className="text-white"> wealthsummit@wealthsummit.shop</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="body-section">
-            <div class="row">
-                <div class="col-6">
-                    <h2 class="heading">Invoice No.: INVOICEID</h2>
-                    <p class="sub-heading">Order Date: ORDERDATE</p>
+        <div className="body-section">
+            <div className="row">
+                <div className="col-6">
+                    <h2 className="heading">Invoice No.: INVOICEID</h2>
+                    <p className="sub-heading">Order Date: ORDERDATE</p>
                 </div>
-                <div class="col-6">
-                    <p class="sub-heading">Full Name: CUSTOMERNAME</p>
-                    <p class="sub-heading">EMAIL:  CUSTOMEREMAIL</p>
+                <div className="col-6">
+                    <p className="sub-heading">Full Name: CUSTOMERNAME</p>
+                    <p className="sub-heading">EMAIL:  CUSTOMEREMAIL</p>
                 </div>
             </div>
         </div>
 
-        <div class="body-section">
-            <h3 class="heading">Ordered Items</h3>
+        <div className="body-section">
+            <h3 className="heading">Ordered Items</h3>
             <br>
             
-            <h3 class="heading"> PRODUCTNAME</h3>
+            <h3 className="heading"> PRODUCTNAME</h3>
                 
                 <br>
                 <h4 >Total Cost : TOTALCOST</h4>
@@ -139,9 +139,9 @@ export const htmlString = `
             <h3 >Payment Mode: Razorpay</h3>
         </div>
 
-        <div class="body-section">
+        <div className="body-section">
             <p>&copy; Copyright 2021 - Wealth Summit. All rights reserved. 
-                <a href="https://www.wealthsummit.shop/" class="float-right">www.wealthsummit.shop</a>
+                <a href="https://www.wealthsummit.shop/" className="float-right">www.wealthsummit.shop</a>
             </p>
         </div>      
     </div>      

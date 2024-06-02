@@ -9,6 +9,8 @@ const Pricing = ({
   setmargin,
   margin,
   profit,
+  compareprice,
+  costPerItem,
   price
 }) => {
   return (
@@ -25,6 +27,7 @@ const Pricing = ({
               onChange={(e) => {
                 setprice(e.target.value);
               }}
+              value={price}
               className="  bg-secondary border-gray-700 text-white w-full rounded-sm   px-2 py-2 outline-none"
               type="number"
               placeholder="0.00"
@@ -36,6 +39,8 @@ const Pricing = ({
           <div className=" flex items-center  border border-gray-700 rounded-md   px-2">
             ₹
             <input
+              value={compareprice}
+
               onChange={(e) => {
                 setcompareprice(e.target.value);
               }}
@@ -52,6 +57,8 @@ const Pricing = ({
           <div className=" flex items-center border border-gray-700  rounded-md  px-2">
             ₹
             <input
+                          value={costPerItem}
+
               onChange={(e) => {
                 setcostPerItem(e.target.value);
                 setprofit(price - e.target.value);

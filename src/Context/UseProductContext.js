@@ -1,5 +1,5 @@
 "use client";
-import { AddProduct, fetchProductsAPI } from "@/API/Products/ProductAPI";
+import { AddProduct, fetchProductsAPI, updateProductAPI } from "@/API/Products/ProductAPI";
 import { useCallback, useContext } from "react";
 import { createContext } from "react";
 import { useEffect } from "react";
@@ -54,10 +54,25 @@ export function UseProductContexProvider({ children }) {
     }
   };
 
+
+  const updateProduct = async (data) => {
+    try {
+      const res = await updateProductAPI(data);
+      if (!res?.isSuccess) {
+        return toast.error(res?.error);
+      }
+      return toast.success(res?.message);
+    } catch (error) {
+      return toast.error(
+        error?.response ? error?.response?.data?.error : error?.message
+      );
+    }
+  };
+
   return (
     <useProductContext.Provider
       value={{
-        fetchProducts,
+        fetchProducts,updateProduct,
         createProduct,
       }}
     >

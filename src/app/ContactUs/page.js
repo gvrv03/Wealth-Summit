@@ -43,14 +43,14 @@ const ContactUS = () => {
   return (
     <section className="body-font relative">
       <div className="container mx-auto">
-        <div className="bg-ground p-5 border border-gray-700 rounded-sm md:rounded-md lg:w-1/2 md:w-2/3 mx-auto">
+        <div className="bg-ground p-5 md:border border-gray-700 rounded-sm md:rounded-md lg:w-1/2 md:w-2/3 mx-auto">
           <h3 className="text-white  font-bold text-2xl ">Contact Us</h3>
-          <div className="text-gray-400 my-2" > wealthsummit@wealthsummit.shop</div>
+          <div className="text-gray-400 my-2 uil uil-envlop" > wealthsummit@wealthsummit.shop</div>
 
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-wrap">
+            <div className="flex gap-5 flex-wrap">
               {/* Name */}
-              <div className="p-2 flex gap-5 md:flex-row flex-col w-full">
+              <div className="md:p-2 flex gap-5 md:flex-row flex-col w-full">
                 <div className="relative w-full">
                   <label
                     htmlFor="name"
@@ -86,7 +86,7 @@ const ContactUS = () => {
                 </div>
               </div>
               {/* Subject */}
-              <div className="relative p-2 w-full">
+              <div className="relative md:p-2 w-full">
                 <label
                   htmlFor="subject"
                   className="leading-7 text-sm text-gray-300 font-semibold"
@@ -103,7 +103,7 @@ const ContactUS = () => {
                 />
               </div>
               {/* Message */}
-              <div className="p-2 w-full">
+              <div className="md:p-2 w-full">
                 <div className="relative">
                   <label
                     htmlFor="message"
