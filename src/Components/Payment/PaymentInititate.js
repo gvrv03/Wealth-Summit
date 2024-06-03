@@ -18,6 +18,7 @@ function generateOrderId() {
 const PaymentInititate = ({
   amount,
   produDID,
+  
   title,
   productDetailID,
   setisBuy,

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <UseStoreContextProvider>
           <UserAuthContexProvider>
             <RenderAllModal />
-            <Toaster position="top-center" reverseOrder={false} />
+            <Toaster  className="z-[99999]" position="top-center" reverseOrder={false} />
             {children}
             <Footer />
           </UserAuthContexProvider>

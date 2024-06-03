@@ -8,10 +8,40 @@ import PaymentInititate from "@/Components/Payment/PaymentInititate";
 import { htmlString } from "../Utility/EmailTem";
 import { useState } from "react";
 import InvoiceTemp from "../Utility/InvoiceTemp";
+import { useRouter } from "next/navigation";
+import { DefaultBTN } from "../Utility/Utility";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { phonepePayURL } from "@/helper/allLinks";
 
 export default function BuyingModal({ state, setState }) {
-  const { curBuyPID, inVoice } = useAppStore();
+  const { curPayUser, curBuyPID, inVoice } = useAppStore();
   const [isBuy, setisBuy] = useState(false);
+  const router = useRouter();
+  const [loading, setloading] = useState(false);
+
+  const handlePay = async (e) => {
+    e.preventDefault();
+    try {
+      setloading(true);
+      if (!curPayUser?.name || !curPayUser?.email) {
+        return toast.error("Fill all the fields");
+      }
+      const res = await axios.post(phonepePayURL, {
+        name: curPayUser?.name,
+        email: curPayUser?.email,
+        amount: curBuyPID?.price,
+        mobileNumber: "8805950201",
+        product: curBuyPID?.id,
+      });
+      return router.push(res?.data?.data);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setloading(false);
+    }
+  };
+
   return (
     <>
       <Modal open={state} onClose={() => setState(false)}>
@@ -36,20 +66,26 @@ export default function BuyingModal({ state, setState }) {
             <h2>₹{curBuyPID?.price}</h2>
           </div>
           <StepOne />
-          <PaymentInititate
+          {/* <PaymentInititate
             title={curBuyPID?.name}
             amount={curBuyPID?.price}
             produDID={curBuyPID?.productID}
             productDetailID={curBuyPID?.id}
             setisBuy={setisBuy}
+          /> */}
+          <DefaultBTN
+            clickHandle={handlePay}
+            name="Pay Now"
+            loading={loading}
+            styleCSS="px-5 mt-5 font-semibold  rounded-sm md:rounded-md"
           />
 
-            <button
-              onClick={() => setState(false)}
-              className=" p-2 border border-gray-700 mt-5"
-            >
-              Cancel Payment
-            </button>
+          <button
+            onClick={() => setState(false)}
+            className=" p-2 border border-gray-700 mt-5"
+          >
+            Cancel Payment
+          </button>
         </ModalDialog>
       </Modal>
     </>

@@ -1,7 +1,7 @@
 "use client";
 import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
 import { DefaultBTN } from "@/Components/Home/Utility/Utility";
-import { subscribeURL } from "@/helper/allLinks";
+import { phonepePayURL, subscribeURL } from "@/helper/allLinks";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -28,7 +28,8 @@ const HomePage = () => {
       setloading(false);
     }
   };
-  const router = useRouter();
+
+ 
   return (
     <section className="bgPattern ">
       <div className=" container  m-auto text-white body-font">

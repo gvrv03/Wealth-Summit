@@ -20,6 +20,7 @@ export const createOrderURL = baseUrl + "api/PaymentGateway/CreateOrder";
 export const downloadProductURL = baseUrl + "api/ProductDown";
 export const getOrderURL = baseUrl + "api/PaymentGateway/GetOrder";
 export const getUserOrderURL = baseUrl + "api/GetUserOrders";
+export const phonepePayURL = baseUrl + "api/PhonePe/GePayment";
 
 
 //Send Email
