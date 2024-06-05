@@ -4,10 +4,7 @@ import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 import { useAppStore } from "@/Context/UseStoreContext";
 import StepOne from "../PaymentSteps/StepOne";
-import PaymentInititate from "@/Components/Payment/PaymentInititate";
-import { htmlString } from "../Utility/EmailTem";
 import { useState } from "react";
-import InvoiceTemp from "../Utility/InvoiceTemp";
 import { useRouter } from "next/navigation";
 import { DefaultBTN } from "../Utility/Utility";
 import axios from "axios";
@@ -16,7 +13,6 @@ import { phonepePayURL } from "@/helper/allLinks";
 
 export default function BuyingModal({ state, setState }) {
   const { curPayUser, curBuyPID, inVoice } = useAppStore();
-  const [isBuy, setisBuy] = useState(false);
   const router = useRouter();
   const [loading, setloading] = useState(false);
 
@@ -31,7 +27,6 @@ export default function BuyingModal({ state, setState }) {
         name: curPayUser?.name,
         email: curPayUser?.email,
         amount: curBuyPID?.price,
-        mobileNumber: "8805950201",
         product: curBuyPID?.id,
       });
       return router.push(res?.data?.data);
@@ -41,6 +36,8 @@ export default function BuyingModal({ state, setState }) {
       setloading(false);
     }
   };
+
+
 
   return (
     <>
@@ -73,6 +70,7 @@ export default function BuyingModal({ state, setState }) {
             productDetailID={curBuyPID?.id}
             setisBuy={setisBuy}
           /> */}
+
           <DefaultBTN
             clickHandle={handlePay}
             name="Pay Now"

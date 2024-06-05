@@ -42,11 +42,11 @@ export async function POST(req, res) {
     await axios.post(sendEmailURL, {
       TID: transactionId,
     });
-    return NextResponse.redirect(`${baseUrl}Success?TID=${transactionId}`, {
+    return NextResponse.redirect(`${baseUrl}PayResult?TID=${transactionId}`, {
       status: 301,
     });
   } else
-    return NextResponse.redirect(`${baseUrl}Failure`, {
+    return NextResponse.redirect(`${baseUrl}PayResult?TID=Failed`, {
       status: 301,
     });
 }

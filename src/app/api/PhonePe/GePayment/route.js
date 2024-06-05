@@ -11,7 +11,7 @@ export const POST = async (req) => {
   try {
     const Data = await req.json();
     const { name, email, amount, mobileNumber, product } = Data;
-    if (!name || !email || !amount || !mobileNumber || !product) {
+    if (!name || !email || !amount  || !product) {
       throw new Error("Fill all the fields");
     }
     const transactionId = "TID" + Date.now();
@@ -24,7 +24,6 @@ export const POST = async (req) => {
       redirectUrl: `${baseUrl}api/PhonePe/Status/${transactionId}`,
       redirectMode: "POST",
       callbackUrl: `${baseUrl}api/PhonePe/Status/${transactionId}`,
-      mobileNumber: mobileNumber,
       paymentInstrument: {
         type: "PAY_PAGE",
       },
