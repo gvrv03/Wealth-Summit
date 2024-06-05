@@ -1,16 +1,12 @@
 import InvoiceTemp from "@/Components/Home/Utility/InvoiceTemp";
 import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
-import initDB from "@/helper/initDB";
-import Order from "@/Modal/Order";
+import { phonepeInvoiceURL } from "@/helper/allLinks";
+import axios from "axios";
 import React from "react";
 
 const SuccessPage = async ({ searchParams }) => {
-  initDB()
-  const res = await Order.findOne({ TID: searchParams?.TID }).populate(
-    "Product"
-  );
-
-  if (!res) {
+  const res = await axios.get(phonepeInvoiceURL + searchParams?.TID);
+  if (!res?.data?.isSuccess) {
     return (
       <section className="bgPattern ">
         <div className="container m-auto">
@@ -26,11 +22,9 @@ const SuccessPage = async ({ searchParams }) => {
     );
   }
 
-  const { Name, Email } = res;
+  const { Name, Email } = res?.data?.data;
 
-  return (
-   <InvoiceTemp Name={Name} Email={Email} TID={searchParams?.TID}  />
-  );
+  return <InvoiceTemp Name={Name} Email={Email} TID={searchParams?.TID} />;
 };
 
 export default SuccessPage;

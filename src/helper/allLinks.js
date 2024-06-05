@@ -21,6 +21,7 @@ export const downloadProductURL = baseUrl + "api/ProductDown";
 export const getOrderURL = baseUrl + "api/PaymentGateway/GetOrder";
 export const getUserOrderURL = baseUrl + "api/GetUserOrders";
 export const phonepePayURL = baseUrl + "api/PhonePe/GePayment";
+export const phonepeInvoiceURL = baseUrl + "api/PhonePe/getInvoice/";
 
 
 //Send Email
