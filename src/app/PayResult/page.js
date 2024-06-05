@@ -1,10 +1,11 @@
 import InvoiceTemp from "@/Components/Home/Utility/InvoiceTemp";
 import ResponsiveAppBar from "@/Components/Home/Utility/ResponsiveAppBar";
+import initDB from "@/helper/initDB";
 import Order from "@/Modal/Order";
-import Link from "next/link";
 import React from "react";
 
 const SuccessPage = async ({ searchParams }) => {
+  initDB()
   const res = await Order.findOne({ TID: searchParams?.TID }).populate(
     "Product"
   );
