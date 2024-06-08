@@ -7,7 +7,7 @@ const ProductDetailTop = ({ product }) => {
   return (
     <div className=" rounded-sm md:rounded-md">
       {/* <ProductSlideShow images={product?.images} /> */}
-      <Image  width={100} height={100} className="md:w-full w-full h-80 "  src={product?.images}   / >
+      <Image  width={100} height={100} className="md:w-full w-full  "  src={product?.images}   / >
       <div className="  flex-col flex  gap-5 items-center justify-center"></div>{" "}
       <h1 className=" mt-5 text-2xl md:text-4xl font-bold ">{product?.title}</h1>{" "}
       <p className=" text-base md:text-xl  mt-2 text-gray-400 ">

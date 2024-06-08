@@ -1,49 +1,68 @@
+"use client"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ProductCard from "@/Components/Home/Product/ProductCard";
 import AllProductSkeleton from "@/Components/Skeleton/AllProductSkeleton";
 import { ProductsURL } from "@/helper/allLinks";
-import axios from "axios";
-import React from "react";
-import { Suspense } from "react";
+import Spinner from "@/Components/Home/Utility/Spinner";
 
-const AllProductComC = async () => {
-  const res = await axios.get(ProductsURL, {
-    headers: {
-      "Cache-Control": "no-cache",
-    },
-  });
-  const Data = await res?.data;
-  if (!Data?.products) {
+const AllProductComC = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(ProductsURL);
+        const { products } = res.data;
+        setProducts(products || []);
+      } catch (err) {
+        setError("Error occurred while fetching products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
     return (
-      <div className="h-screen w-full grid place-items-center   bg-gray-950  ">
-        Error occuured
+      <div className=" fixed left-0  h-screen w-full grid place-items-center bg-gray-950">
+        <Spinner/>
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div className="h-screen w-full grid place-items-center bg-gray-950">
+        {error}
+      </div>
+    );
+  }
+
   return (
     <div>
-      {Data?.products?.length === 0 && (
-        <div className="w-full text-center font-semibold ">
-          No Products Found
+      {products.length === 0 ? (
+        <div className="w-full text-center font-semibold">No Products Found</div>
+      ) : (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+          {products.map((item, index) => (
+            <ProductCard
+              key={index}
+              description={item.description}
+              thumbnail={item.thumbnail}
+              title={item.title}
+              price={item.pricing.price}
+              comPrice={item.pricing.comAtPrice}
+              views={item.views}
+              id={item._id}
+            />
+          ))}
         </div>
       )}
-      <Suspense fallback={<AllProductSkeleton />}>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-4 ">
-          {Data?.products?.map((item, index) => {
-            return (
-              <ProductCard
-                key={index}
-                description={item?.description}
-                thumbnail={item?.thumbnail}
-                title={item?.title}
-                price={item?.pricing?.price}
-                comPrice={item?.pricing?.comAtPrice}
-                views={item?.views}
-                id={item?._id}
-              />
-            );
-          })}
-        </div>
-      </Suspense>
     </div>
   );
 };

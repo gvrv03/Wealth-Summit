@@ -16,7 +16,6 @@ const EditProductsComp = ({ product }) => {
   //Images
   const [thumbnail, setthumbnail] = useState(product?.thumbnail);
   const [images, setimages] = useState(product?.images);
-  const [userImages, setuserImages] = useState(product?.userImages);
   // Pricing
   const [price, setprice] = useState(product?.pricing?.price);
   const [compareprice, setcompareprice] = useState(
@@ -46,7 +45,6 @@ const EditProductsComp = ({ product }) => {
           artical,
           images,
           thumbnail,
-          userImages,
           pricing: {
             price,
             comAtPrice: compareprice,
@@ -147,7 +145,7 @@ const EditProductsComp = ({ product }) => {
             )}
           </div>
         </div>
-        <div className="flex w-full bg-secondary p-5 gap-5">
+        <div className="flex  w-full md:w-[30%] bg-secondary p-5 gap-5">
           <UploadDropzone
             className="px-8 w-full rounded-none "
             appearance={{
@@ -160,7 +158,8 @@ const EditProductsComp = ({ product }) => {
             }}
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
-              setimages((prev) => [...prev, res[0].url]);
+              console.log(res);
+              setimages(res[0]?.url);
               toast.success("Upload Completed");
             }}
             onUploadError={(error) => {
@@ -170,53 +169,14 @@ const EditProductsComp = ({ product }) => {
           <div className="w-full">
             <h2 className="font-semibold">Preview</h2>
             <h4 className=" text-gray-500 text-xs">
-              {images?.length == 0 && "Thumbnail not uploaded"}
+              {!images && "Cover not uploaded"}
             </h4>
-            <div className="grid gap-2 grid-cols-4 md:grid-cols-2">
-              {images?.map((item, index) => {
-                return (
-                  <div className="" key={index}>
-                    <img src={item} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-        <div className="flex w-full bg-secondary p-5 gap-5">
-          <UploadDropzone
-            className="px-8 w-full rounded-none "
-            appearance={{
-              container:
-                " outline-none md:w-96 w-full hover:cursor-pointer border-none bg-ground ",
-              button: "bg-primaryColor  text-xs w-full mt-5",
-              uploadIcon: "w-10 mt-2",
-              label: "text-xs mt-5",
-              allowedContent: "text-xs",
-            }}
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-              setuserImages((prev) => [...prev, res[0].url]);
-              toast.success("Upload Completed");
-            }}
-            onUploadError={(error) => {
-              toast.error(`ERROR! ${error.message}`);
-            }}
-          />
-          <div className="w-full">
-            <h2 className="font-semibold">Preview</h2>
-            <h4 className=" text-gray-500 text-xs">
-              {userImages?.length == 0 && "Thumbnail not uploaded"}
-            </h4>
-            <div className="grid  gap-2 grid-cols-4 md:grid-cols-4">
-              {userImages?.map((item, index) => {
-                return (
-                  <div className="" key={index}>
-                    <img src={item} className="w-full" />
-                  </div>
-                );
-              })}
-            </div>
+
+            {images && (
+              <div className="">
+                <img src={images} alt={images} />
+              </div>
+            )}
           </div>
         </div>
       </div>
