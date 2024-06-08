@@ -43,6 +43,11 @@
   background-color: #050124 !important;
   color: white !important;
 }
+.sun-editor-editable{
+  background: transparent !important;
+  color: white !important;
+  padding: 0 !important;
+}
 .sun-editor .se-toolbar {
   outline: none !important;
 

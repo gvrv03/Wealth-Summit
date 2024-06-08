@@ -20,7 +20,7 @@ export const POST = RootAuth(async (request) => {
       !artical ||
       !images ||
       !thumbnail ||
-      !status 
+      !status
     ) {
       throw new Error("Fill all the Fields!");
     }
@@ -74,13 +74,11 @@ export const POST = RootAuth(async (request) => {
       }
     );
   } catch (error) {
-    return NextResponse.json(
-      {
-        data: null,
-        error: error?.message,
-        isSuccess: false,
-      }
-    );
+    return NextResponse.json({
+      data: null,
+      error: error?.message,
+      isSuccess: false,
+    });
   }
 });
 

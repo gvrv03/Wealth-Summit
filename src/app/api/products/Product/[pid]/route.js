@@ -29,15 +29,8 @@ export const POST = RootAuth(async (request) => {
   try {
     const Data = await request.json();
     const { productDetail, product, pID } = Data;
-    const {
-      addeBy,
-      title,
-      description,
-      artical,
-      images,
-      thumbnail,
-      status
-    } = productDetail;
+    const { addeBy, title, description, artical, images, thumbnail, status } =
+      productDetail;
     if (
       !addeBy ||
       !title ||
@@ -45,7 +38,7 @@ export const POST = RootAuth(async (request) => {
       !artical ||
       !images ||
       !thumbnail ||
-      !status 
+      !status
     ) {
       throw new Error("Fill all the Fields!");
     }
@@ -56,8 +49,9 @@ export const POST = RootAuth(async (request) => {
     }
 
     const res = await ProductDetail.findOneAndUpdate(
-      { title },
-      { ...productDetail }
+      { _id: pID },
+      { ...productDetail },
+      { new: true } // This option returns the updated document
     );
 
     // --------------To Update actudal produuct----------------
@@ -69,7 +63,8 @@ export const POST = RootAuth(async (request) => {
     };
     const addProduct = await ProductActual.findOneAndUpdate(
       { ProductDetail: res?._id },
-      { ...productOBJ }
+      { ...productOBJ },
+      { new: true } // This option returns the updated document
     );
 
     return NextResponse.json(

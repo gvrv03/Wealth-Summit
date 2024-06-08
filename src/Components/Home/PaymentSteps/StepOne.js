@@ -43,7 +43,7 @@ const StepOne = ({ pID, pPrice }) => {
   };
 
   return (
-    <form className="md:fixed md:w-[425px] md:mt-10  md:border md:p-5 border-gray-700 rounded-none items-center flex-col flex gap-5">
+    <form className="md:fixed md:w-[425px] md:mt-10 bg-ground  md:border md:p-5 border-gray-700 rounded-none items-center flex-col flex gap-5">
       <p className="font-semibold w-full ">Payment Details</p>
       <input
         type="text"

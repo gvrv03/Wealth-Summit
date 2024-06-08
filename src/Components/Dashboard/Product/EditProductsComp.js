@@ -53,7 +53,7 @@ const EditProductsComp = ({ product }) => {
             margin,
           },
         },
-        pID:product?._id,
+        pID: product?._id,
         product: {
           Name: title,
           Product: productURL,
@@ -205,8 +205,9 @@ const EditProductsComp = ({ product }) => {
             costPerItem={costPerItem}
           />
         </div>
-
-        <TextEditor artical={artical} height={500} setartical={setartical} />
+        <div className=" bg-secondary px-5">
+          <TextEditor artical={artical} height={500} setartical={setartical} />
+        </div>
       </div>
     </div>
   );

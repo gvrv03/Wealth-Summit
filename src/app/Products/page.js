@@ -27,7 +27,7 @@ const AllProductComC = async () => {
         </div>
       )}
       <Suspense fallback={<AllProductSkeleton />}>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-4 ">
+        <div className="grid grid-cols-1 p-5 md:px-0 gap-5 md:grid-cols-4 ">
           {products?.map((item, index) => {
             return (
               <ProductCard
