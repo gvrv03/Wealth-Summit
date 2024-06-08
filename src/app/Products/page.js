@@ -11,8 +11,8 @@ const AllProductComC = async () => {
       "Cache-Control": "no-cache",
     },
   });
-  const { products } = await res?.data;
-  if (!products) {
+  const Data = await res?.data;
+  if (!Data?.products) {
     return (
       <div className="h-screen w-full grid place-items-center   bg-gray-950  ">
         Error occuured
@@ -21,14 +21,14 @@ const AllProductComC = async () => {
   }
   return (
     <div>
-      {products?.length === 0 && (
+      {Data?.products?.length === 0 && (
         <div className="w-full text-center font-semibold ">
           No Products Found
         </div>
       )}
       <Suspense fallback={<AllProductSkeleton />}>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-4 ">
-          {products?.map((item, index) => {
+          {Data?.products?.map((item, index) => {
             return (
               <ProductCard
                 key={index}

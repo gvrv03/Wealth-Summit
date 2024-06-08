@@ -36,8 +36,7 @@ export const POST = RootAuth(async (request) => {
       artical,
       images,
       thumbnail,
-      status,
-      userImages,
+      status
     } = productDetail;
     if (
       !addeBy ||
@@ -46,8 +45,7 @@ export const POST = RootAuth(async (request) => {
       !artical ||
       !images ||
       !thumbnail ||
-      !status ||
-      !userImages
+      !status 
     ) {
       throw new Error("Fill all the Fields!");
     }

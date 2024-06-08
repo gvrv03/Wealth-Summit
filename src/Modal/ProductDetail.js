@@ -13,9 +13,8 @@ const productDetailSchema = new Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     artical: { type: String, required: true },
-    images: [String],
+    images: { type: String, required: true },
     thumbnail: { type: String, required: true },
-    userImages: [String],
     pricing: {
       price: { type: Number, default: 0, required: true },
       comAtPrice: { type: Number, default: 0, required: true },
