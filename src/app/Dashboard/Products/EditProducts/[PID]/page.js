@@ -4,7 +4,6 @@ import React from "react";
 import "suneditor/dist/css/suneditor.min.css";
 import ProductDetailTop from "@/Components/Home/Product/ProductDetailTop";
 import BuyBtn from "@/Components/Home/Product/BuyBtn";
-import { CardStack } from "@/Components/Home/Utility/CardStack";
 import NotFoundProduct from "@/app/Products/Product/not-found";
 import EditProductsComp from "@/Components/Dashboard/Product/EditProductsComp";
 
